@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#008080">
+  <meta name="description" content="Uma coleção de sites-exemplo em uma área de trabalho inspirada no Windows 95.">
+  <title>Websites — Área de trabalho</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Tahoma, "MS Sans Serif", Arial, sans-serif;
+      font-size: 13px;
+      color: #111;
+      background: #008080;
+      --surface: #c0c0c0;
+      --light: #fff;
+      --mid: #808080;
+      --dark: #404040;
+      --blue: #000080;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      padding: 18px 18px 58px;
+      background-color: #008080;
+      background-image: radial-gradient(ellipse at 50% 46%, #138e8e 0, #008080 72%);
+    }
+
+    button, input { font: inherit; }
+
+    .desktop-icon {
+      position: fixed;
+      top: 26px;
+      left: 18px;
+      display: grid;
+      justify-items: center;
+      gap: 5px;
+      width: 76px;
+      color: white;
+      text-align: center;
+      text-shadow: 1px 1px #000;
+    }
+
+    .desktop-icon .icon { font-size: 30px; }
+
+    .window {
+      width: min(1050px, 100%);
+      min-height: min(720px, calc(100vh - 94px));
+      margin: 0 auto;
+      padding: 3px;
+      background: var(--surface);
+      border-top: 2px solid var(--light);
+      border-left: 2px solid var(--light);
+      border-right: 2px solid var(--dark);
+      border-bottom: 2px solid var(--dark);
+      box-shadow: 2px 2px 0 #0008;
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 27px;
+      padding: 3px 4px 3px 7px;
+      color: #fff;
+      background: linear-gradient(90deg, #000080, #1084d0);
+      font-weight: bold;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .title-icon { font-size: 16px; }
+
+    .window-controls { display: flex; gap: 3px; }
+
+    .window-controls span {
+      display: grid;
+      width: 19px;
+      height: 18px;
+      place-items: center;
+      color: #111;
+      background: var(--surface);
+      border-top: 1px solid var(--light);
+      border-left: 1px solid var(--light);
+      border-right: 1px solid var(--dark);
+      border-bottom: 1px solid var(--dark);
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .menu-bar {
+      display: flex;
+      gap: 18px;
+      padding: 8px 7px 7px;
+    }
+
+    .menu-bar span:first-letter { text-decoration: underline; }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px;
+      border-top: 1px solid var(--mid);
+      border-bottom: 1px solid #fff;
+    }
+
+    .tool-button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 29px;
+      padding: 3px 8px;
+      background: var(--surface);
+      border-top: 1px solid var(--light);
+      border-left: 1px solid var(--light);
+      border-right: 1px solid var(--dark);
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .address-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px 8px;
+    }
+
+    .address-label { white-space: nowrap; }
+
+    .address {
+      flex: 1;
+      min-width: 0;
+      padding: 4px 6px;
+      background: #fff;
+      border-top: 1px solid var(--dark);
+      border-left: 1px solid var(--dark);
+      border-right: 1px solid var(--light);
+      border-bottom: 1px solid var(--light);
+      font-family: "Courier New", monospace;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 205px minmax(0, 1fr);
+      min-height: 520px;
+      margin: 0 5px 5px;
+      background: #fff;
+      border-top: 2px solid var(--dark);
+      border-left: 2px solid var(--dark);
+      border-right: 2px solid var(--light);
+      border-bottom: 2px solid var(--light);
+    }
+
+    .sidebar {
+      padding: 18px 13px;
+      color: #222;
+      background: #d5d5d5;
+      border-right: 1px solid #888;
+    }
+
+    .sidebar h2 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 15px;
+    }
+
+    .sidebar p {
+      margin: 0 0 22px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      margin: 0 0 15px;
+      background: #999;
+      border-bottom: 1px solid #fff;
+    }
+
+    .folder-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .folder-link:hover { text-decoration: underline; }
+
+    .content {
+      min-width: 0;
+      padding: 20px;
+    }
+
+    .content-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 17px;
+    }
+
+    .content-heading h1 {
+      margin: 0 0 5px;
+      color: var(--blue);
+      font-size: 22px;
+    }
+
+    .content-heading p {
+      margin: 0;
+      color: #555;
+    }
+
+    .search {
+      width: min(245px, 45%);
+      padding: 7px 8px;
+      background: #fff;
+      border-top: 2px solid var(--mid);
+      border-left: 2px solid var(--mid);
+      border-right: 2px solid var(--light);
+      border-bottom: 2px solid var(--light);
+    }
+
+    .search:focus { outline: 1px dotted #111; outline-offset: -4px; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .site-card {
+      display: flex;
+      min-height: 143px;
+      flex-direction: column;
+      padding: 12px;
+      color: #111;
+      background: #f7f7f7;
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #888;
+      border-bottom: 1px solid #888;
+      box-shadow: 1px 1px 0 #bbb;
+      text-decoration: none;
+    }
+
+    .site-card[hidden] { display: none; }
+
+    .site-card:hover, .site-card:focus-visible {
+      background: #e8f2ff;
+      outline: 1px dotted var(--blue);
+      outline-offset: -5px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 9px;
+    }
+
+    .site-icon {
+      display: grid;
+      width: 37px;
+      height: 37px;
+      flex: 0 0 37px;
+      place-items: center;
+      background: #e3e3e3;
+      border: 1px solid #aaa;
+      font-size: 22px;
+    }
+
+    .site-card h2 {
+      margin: 0;
+      color: #000080;
+      font-size: 14px;
+    }
+
+    .category {
+      display: inline-block;
+      margin-top: 4px;
+      color: #555;
+      font-size: 11px;
+    }
+
+    .site-card p {
+      margin: 0 0 11px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .open-label {
+      margin-top: auto;
+      color: #000080;
+      font-size: 12px;
+      text-decoration: underline;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 28px 8px;
+      color: #555;
+      text-align: center;
+    }
+
+    .statusbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 5px;
+      padding: 5px 8px;
+      border-top: 1px solid var(--mid);
+      border-left: 1px solid var(--mid);
+      border-right: 1px solid var(--light);
+      border-bottom: 1px solid var(--light);
+      color: #333;
+      font-size: 11px;
+    }
+
+    .taskbar {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 42px;
+      padding: 4px;
+      background: var(--surface);
+      border-top: 2px solid var(--light);
+    }
+
+    .start-button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 31px;
+      padding: 3px 9px;
+      background: var(--surface);
+      border-top: 2px solid var(--light);
+      border-left: 2px solid var(--light);
+      border-right: 2px solid var(--dark);
+      border-bottom: 2px solid var(--dark);
+      font-weight: bold;
+    }
+
+    .start-flag { font-size: 18px; }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 30px;
+      width: min(220px, 48vw);
+      padding: 3px 9px;
+      background: #b4b4b4;
+      border-top: 1px solid var(--dark);
+      border-left: 1px solid var(--dark);
+      border-right: 1px solid var(--light);
+      border-bottom: 1px solid var(--light);
+    }
+
+    .tray {
+      margin-left: auto;
+      padding: 7px 10px;
+      border-top: 1px solid var(--mid);
+      border-left: 1px solid var(--mid);
+      border-right: 1px solid var(--light);
+      border-bottom: 1px solid var(--light);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      body { padding: 10px 8px 54px; }
+      .desktop-icon { display: none; }
+      .window { min-height: calc(100vh - 72px); }
+      .main-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .content { padding: 16px 12px; }
+      .content-heading { align-items: stretch; flex-direction: column; }
+      .search { width: 100%; }
+      .card-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    }
+
+    @media (max-width: 430px) {
+      body { padding-right: 4px; padding-left: 4px; }
+      .menu-bar { gap: 12px; }
+      .toolbar .tool-button { padding: 3px 6px; }
+      .toolbar .tool-button span:last-child { display: none; }
+      .address-row { gap: 5px; padding-right: 5px; padding-left: 5px; }
+      .content-heading h1 { font-size: 19px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop-icon" aria-hidden="true">
+    <span class="icon">🖥️</span>
+    <span>Meu computador</span>
+  </div>
+
+  <main class="window">
+    <header class="titlebar">
+      <div class="title"><span class="title-icon" aria-hidden="true">🌐</span><span>Websites — Windows Explorer</span></div>
+      <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+    </header>
+    <nav class="menu-bar" aria-label="Menu">
+      <span>Arquivo</span><span>Editar</span><span>Exibir</span><span>Favoritos</span><span>Ajuda</span>
+    </nav>
+    <div class="toolbar" aria-hidden="true">
+      <div class="tool-button"><span>⬅️</span><span>Voltar</span></div>
+      <div class="tool-button"><span>➡️</span><span>Avançar</span></div>
+      <div class="tool-button"><span>📁</span><span>Acima</span></div>
+      <div class="tool-button"><span>🔍</span><span>Pesquisar</span></div>
+    </div>
+    <div class="address-row">
+      <span class="address-label">Endereço</span>
+      <div class="address">C:\EXAMPLES\WEBSITES</div>
+      <span aria-hidden="true">📁</span>
+    </div>
+
+    <div class="main-layout">
+      <aside class="sidebar">
+        <h2>Websites de exemplo</h2>
+        <p>Uma coleção de projetos feitos para a web. Escolha uma pasta para abrir o site.</p>
+        <div class="sidebar-divider"></div>
+        <strong>Detalhes</strong>
+        <p>10 sites<br>HTML · CSS · JavaScript</p>
+        <div class="sidebar-divider"></div>
+        <strong>Atalhos</strong>
+        <a class="folder-link" href="#sites"><span aria-hidden="true">📂</span>Todos os sites</a>
+        <a class="folder-link" href="#barbearias"><span aria-hidden="true">💈</span>Barbearias</a>
+        <a class="folder-link" href="#saude"><span aria-hidden="true">🩺</span>Saúde</a>
+      </aside>
+
+      <section class="content" id="sites" aria-labelledby="heading">
+        <div class="content-heading">
+          <div>
+            <h1 id="heading">Meus projetos na Web</h1>
+            <p>Abra um site para explorar o projeto.</p>
+          </div>
+          <label class="sr-only" for="site-search">Pesquisar sites</label>
+          <input class="search" id="site-search" type="search" placeholder="🔍 Pesquisar sites..." autocomplete="off">
+        </div>
+
+        <div class="card-grid" id="site-list">
+          <a class="site-card" href="./Websites/Bolos/index.html" data-name="Bolos da Salette bolos doces salgados confeitaria">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🎂</span><div><h2>Bolos da Salette</h2><span class="category">Confeitaria</span></div></div>
+            <p>Bolos, salgados e doces feitos à mão em Santa Maria.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" id="saude" href="./Websites/Clinica%20Borsatto/index.html" data-name="Clínica Aurora saúde odontologia">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🦷</span><div><h2>Clínica Aurora</h2><span class="category">Saúde · Odontologia</span></div></div>
+            <p>Saúde bucal cuidada com atenção integral.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/C%C3%A9lio%20Supermercado/index.html" data-name="Mercado Ponto Bom supermercado mercado bairro">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🛒</span><div><h2>Mercado Ponto Bom</h2><span class="category">Comércio · Mercado</span></div></div>
+            <p>Supermercado de bairro com açougue e padaria próprios.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/Dental-clinic-mockup/index.html" data-name="Clínica Dentária Dental saúde odontologia">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🩺</span><div><h2>Clínica Dentária</h2><span class="category">Saúde · Odontologia</span></div></div>
+            <p>Atendimento odontológico personalizado para toda a família.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/Flow%20Barbershop/index.html" data-name="Flow Barbershop barbearia cabelo">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">💈</span><div><h2>Flow Barbershop</h2><span class="category">Estilo · Barbearia</span></div></div>
+            <p>Seu estilo é o nosso compromisso.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/Performance%20Academia/index.html" data-name="Impulso Fitness academia treino">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🏋️</span><div><h2>Impulso Fitness</h2><span class="category">Fitness</span></div></div>
+            <p>Treino sério, resultado real.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/Vitadente/index.html" data-name="Sorriso do Vale dentista saúde odontologia">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🦷</span><div><h2>Sorriso do Vale</h2><span class="category">Saúde · Odontologia</span></div></div>
+            <p>Clínica odontológica de bairro que cuida de famílias.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" id="barbearias" href="./Websites/barbershop%201/index.html" data-name="Navalha e Cia barbearia corte barba">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">✂️</span><div><h2>Navalha &amp; Cia</h2><span class="category">Estilo · Barbearia</span></div></div>
+            <p>Barba feita na navalha, do jeito de sempre.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/barbershop%202/index.html" data-name="Fade Lab barbearia corte">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">💈</span><div><h2>Fade Lab</h2><span class="category">Estilo · Barbearia</span></div></div>
+            <p>Degradê, platinado, barba e agendamento rápido.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+          <a class="site-card" href="./Websites/barbershop%203/index.html" data-name="Ateliê Noronha barbearia corte">
+            <div class="card-top"><span class="site-icon" aria-hidden="true">🪒</span><div><h2>Ateliê Noronha</h2><span class="category">Estilo · Barbearia</span></div></div>
+            <p>Um corte pensado para o seu rosto, com hora marcada.</p><span class="open-label">Abrir site ↗</span>
+          </a>
+        </div>
+        <p class="empty-state" id="empty-state">Nenhum site encontrado. Tente outra pesquisa.</p>
+      </section>
+    </div>
+    <footer class="statusbar"><span id="result-count">10 objetos</span><span>Pronto</span></footer>
+  </main>
+
+  <div class="taskbar">
+    <div class="start-button"><span class="start-flag" aria-hidden="true">🪟</span>Iniciar</div>
+    <div class="task-item"><span aria-hidden="true">🌐</span>Websites — Explorer</div>
+    <div class="tray"><span aria-hidden="true">🔊</span> <time id="clock">12:00</time></div>
+  </div>
+  <script>
+    const search = document.querySelector("#site-search");
+    const cards = [...document.querySelectorAll(".site-card")];
+    const count = document.querySelector("#result-count");
+    const emptyState = document.querySelector("#empty-state");
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLocaleLowerCase("pt-BR");
+      let visible = 0;
+      for (const card of cards) {
+        const matches = card.dataset.name.toLocaleLowerCase("pt-BR").includes(query);
+        card.hidden = !matches;
+        if (matches) visible++;
+      }
+      count.textContent = `${visible} ${visible === 1 ? "objeto" : "objetos"}`;
+      emptyState.style.display = visible ? "none" : "block";
+    });
+
+    function updateClock() {
+      document.querySelector("#clock").textContent = new Intl.DateTimeFormat("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(new Date());
+    }
+    updateClock();
+    setInterval(updateClock, 30_000);
+  </script>
+</body>
+</html>

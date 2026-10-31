@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Navalha & Cia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:#16302b;font-family:'Work Sans',system-ui,sans-serif}
+a{color:inherit}
+a:focus-visible,.chip:focus-visible,.go:focus-visible{outline:3px solid #f5a300;outline-offset:2px}
+.m{display:block}
+.m1{background:#16302b;color:#ebe5d3;font-family:'Work Sans',sans-serif;position:relative;overflow:hidden}
+.m1 .pole{position:absolute;left:0;top:0;bottom:0;width:22px;background:repeating-linear-gradient(-45deg,#a8322d 0 14px,#ebe5d3 14px 28px,#25467a 28px 42px,#ebe5d3 42px 56px)}
+.m1 .in{max-width:980px;margin:0 auto;padding:0 24px 0 56px}
+.m1 nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #c49a4566;flex-wrap:wrap;gap:12px}
+.m1 .logo{font:700 24px 'Bodoni Moda',serif;color:#c49a45;letter-spacing:.02em}
+.m1 nav div{display:flex;gap:22px;font-size:15px}
+.m1 h1{font:700 clamp(40px,8vw,84px)/1.02 'Bodoni Moda',serif;margin:56px 0 18px;max-width:11em}
+.m1 .lead{font-size:18px;line-height:1.6;max-width:34em;color:#cfc8b3}
+.m1 .btn{display:inline-block;margin:28px 0 56px;padding:15px 26px;background:#c49a45;color:#16302b;font-weight:600;text-decoration:none;border-radius:2px}
+.m1 h2{font:500 30px 'Bodoni Moda',serif;color:#c49a45;margin-bottom:18px}
+.m1 ul{list-style:none;padding:0;max-width:640px}
+.m1 li{display:flex;align-items:baseline;gap:10px;padding:10px 0;font-size:18px}
+.m1 li i{flex:1;border-bottom:2px dotted #c49a4577;transform:translateY(-4px)}
+.m1 li b{font-weight:600;color:#c49a45}
+.m1 li small{display:block;font-size:13px;color:#a9a48f}
+.m1 .foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:56px;padding:28px 0 36px;border-top:1px solid #c49a4566;font-size:15px;line-height:1.7;color:#cfc8b3}
+@media (max-width:720px){.m1 nav div{gap:14px}}
+</style>
+</head>
+<body>
+<main class="m m1">
+  <div class="pole" aria-hidden="true"></div>
+  <div class="in">
+    <nav><span class="logo">Navalha &amp; Cia</span><div><a href="#">Serviços</a><a href="#">Barbeiros</a><a href="#">Contato</a></div></nav>
+    <h1>Barba feita na navalha, do jeito de sempre.</h1>
+    <p class="lead">Toalha quente, espuma na brocha e corte de tesoura. Atendemos com hora marcada, sem pressa e com café na casa.</p>
+    <a class="btn" href="#">Agendar pelo WhatsApp</a>
+    <h2>Tabela de serviços</h2>
+    <ul>
+      <li>Corte na tesoura<i></i><b>R$ 55</b></li>
+      <li>Barba com toalha quente<i></i><b>R$ 45</b></li>
+      <li>Corte + barba<small>o mais pedido</small><i></i><b>R$ 90</b></li>
+      <li>Bigode e contorno<i></i><b>R$ 25</b></li>
+      <li>Pezinho<i></i><b>R$ 15</b></li>
+    </ul>
+    <div class="foot">
+      <div><b>Endereço</b><br>Rua das Palmeiras, 240<br>Centro</div>
+      <div><b>Horários</b><br>Ter a sex: 9h às 19h<br>Sáb: 8h às 17h<br>Dom e seg: fechado</div>
+      <div><b>Contato</b><br>(55) 99999-0000<br>@navalhaecia</div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

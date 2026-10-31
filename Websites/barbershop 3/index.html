@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ateliê Noronha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:#dde1e3;font-family:'Work Sans',system-ui,sans-serif}
+a{color:inherit}
+a:focus-visible,.chip:focus-visible,.go:focus-visible{outline:3px solid #f5a300;outline-offset:2px}
+.m{display:block}
+.m3{background:#dde1e3;color:#1b1f22;font-family:'DM Sans',sans-serif}
+.m3 .in{max-width:1040px;margin:0 auto;padding:0 28px}
+.m3 nav{display:flex;justify-content:space-between;padding:26px 0;font-size:15px;flex-wrap:wrap;gap:12px}
+.m3 .logo{font:400 26px 'Instrument Serif',serif}
+.m3 nav div{display:flex;gap:26px}
+.m3 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;padding:40px 0 64px}
+.m3 h1{font:400 clamp(44px,7vw,92px)/1 'Instrument Serif',serif;letter-spacing:-.015em}
+.m3 .hero p{font-size:17px;line-height:1.6;margin:22px 0 28px;max-width:30em}
+.m3 .btn{display:inline-block;padding:14px 26px;background:#5b1a2b;color:#fff;text-decoration:none;border-radius:99px;font-weight:500}
+.m3 .arch{aspect-ratio:3/4;background:linear-gradient(#5b1a2b,#3d1220);border-radius:999px 999px 0 0;position:relative;display:flex;align-items:flex-end;justify-content:center;padding:24px}
+.m3 .arch span{font:italic 400 22px 'Instrument Serif',serif;color:#dde1e3;text-align:center;line-height:1.3}
+.m3 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;padding:40px 0 64px;border-top:1px solid #1b1f2233}
+.m3 h2{font:400 32px 'Instrument Serif',serif;margin-bottom:16px}
+.m3 table{width:100%;border-collapse:collapse;font-size:16px}
+.m3 td{padding:11px 0;border-bottom:1px solid #1b1f2233}
+.m3 td:last-child{text-align:right}
+.m3 .foot{padding:22px 0 34px;border-top:1px solid #1b1f2233;font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:720px){.m3 .hero{grid-template-columns:1fr}.m3 .arch{max-width:280px}}
+</style>
+</head>
+<body>
+<main class="m m3">
+  <div class="in">
+    <nav><span class="logo">Ateliê Noronha</span><div><a href="#">Serviços</a><a href="#">Equipe</a><a href="#">Reservar</a></div></nav>
+    <div class="hero">
+      <div>
+        <h1>Um corte pensado para o seu rosto.</h1>
+        <p>Barbearia de horário reservado, com atendimento individual de uma hora. Você chega, conversa com o barbeiro e sai com o corte combinado.</p>
+        <a class="btn" href="#">Reservar meu horário</a>
+      </div>
+      <div class="arch" aria-hidden="true"><span>Atendimento individual,<br>sempre com hora marcada</span></div>
+    </div>
+    <div class="cols">
+      <section>
+        <h2>Serviços</h2>
+        <table>
+          <tr><td>Corte personalizado</td><td>R$ 120</td></tr>
+          <tr><td>Barba e toalha quente</td><td>R$ 80</td></tr>
+          <tr><td>Corte e barba</td><td>R$ 180</td></tr>
+          <tr><td>Hidratação capilar</td><td>R$ 60</td></tr>
+        </table>
+      </section>
+      <section>
+        <h2>Horários</h2>
+        <table>
+          <tr><td>Terça a sexta</td><td>10h às 20h</td></tr>
+          <tr><td>Sábado</td><td>9h às 16h</td></tr>
+          <tr><td>Domingo e segunda</td><td>Fechado</td></tr>
+        </table>
+      </section>
+    </div>
+    <div class="foot"><span>Rua Bento Gonçalves, 88 · Centro</span><span>(55) 98888-0000 · @ateliernoronha</span></div>
+  </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mercado Ponto Bom — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-900: #17301F;
+  --green-700: #234A30;
+  --green-600: #2E5C3D;
+  --cream: #F1EFE6;
+  --paper: #FBFAF5;
+  --ink: #1B1B16;
+  --ink-soft: #55584C;
+  --line: #DAD6C4;
+  --red: #B5402A;
+  --mustard: #D99A1F;
+  --bg: var(--cream);
+  --surface: var(--paper);
+  --text: var(--ink);
+  --text-soft: var(--ink-soft);
+  --border: var(--line);
+  --nav-bg: var(--green-900);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: border-box;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14150F;
+    --surface: #1D1F16;
+    --text: #EDEAdd;
+    --text-soft: #ABA894;
+    --border: #34362A;
+    --nav-bg: #0F1B12;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14150F;
+  --surface: #1D1F16;
+  --text: #EDEAdd;
+  --text-soft: #ABA894;
+  --border: #34362A;
+  --nav-bg: #0F1B12;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+h1, h2, h3, .display {
+  font-family: 'Archivo', sans-serif;
+  color: var(--text);
+  margin: 0;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* top switcher */
+.mode-bar {
+  background: var(--nav-bg);
+  color: #F1EFE6;
+  padding: env(safe-area-inset-top, 0px) 0 0 0;
+}
+.mode-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.mode-title { font-family:'Archivo'; font-weight:700; font-size: 17px; letter-spacing: 0.2px; }
+.mode-tag { font-size: 12px; color: #CFCBB4; }
+.mode-tabs { display: flex; gap: 6px; margin-left: auto; }
+.mode-tabs button {
+  background: transparent;
+  border: 1px solid #45543F;
+  color: #E6E3D3;
+  padding: 7px 14px;
+  border-radius: 7px;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+.mode-tabs button.active { background: #F1EFE6; color: var(--green-900); border-color: #F1EFE6; }
+
+/* SITE VIEW */
+#view-site { display: block; }
+#view-worker { display: none; }
+#view-admin { display: none; }
+
+.site-nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 5;
+}
+.site-nav-inner {
+  max-width: 1040px; margin: 0 auto; padding: 16px 20px;
+  display: flex; align-items: center; gap: 26px; flex-wrap: wrap;
+}
+.brand { display:flex; align-items:center; gap: 10px; }
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--green-700);
+  display:flex; align-items:center; justify-content:center;
+  color: #F1EFE6; font-family:'Archivo'; font-weight:800; font-size: 15px;
+}
+.brand-name { font-family:'Archivo'; font-weight: 700; font-size: 17px; }
+.site-links { display:flex; gap: 20px; font-size: 14px; font-weight: 600; color: var(--text-soft); }
+.site-links button { background:none; border:none; cursor:pointer; font: inherit; color: inherit; padding: 4px 0; border-bottom: 2px solid transparent; }
+.site-links button.active { color: var(--text); border-bottom-color: var(--red); }
+
+.section { max-width: 1040px; margin: 0 auto; padding: 40px 20px; }
+.hero {
+  padding: 40px 20px 34px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner { max-width: 1040px; margin: 0 auto; display:flex; gap: 34px; flex-wrap: wrap; align-items: flex-end; }
+.hero h1 { font-size: 34px; font-weight: 800; max-width: 460px; }
+.hero-meta { display:flex; flex-direction:column; gap: 6px; font-size: 14px; color: var(--text-soft); min-width: 220px; }
+.rating-row { display:flex; align-items:center; gap: 8px; }
+.stars { color: var(--mustard); font-size: 15px; letter-spacing: 1px; }
+.pill { display:inline-flex; align-items:center; gap:6px; background: var(--surface); border:1px solid var(--border); padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.pill.open { color: var(--green-700); }
+.pill.open::before { content:''; width:6px; height:6px; border-radius:50%; background: var(--green-700); }
+
+h2.section-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.section-sub { color: var(--text-soft); font-size: 14px; margin-bottom: 20px; }
+
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-img {
+  height: 110px;
+  background: var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 34px;
+  position: relative;
+}
+[data-theme="dark"] .card-img, body:not([data-theme="light"]) .card-img { background: #262819; }
+.badge {
+  position:absolute; top: 8px; left: 8px;
+  background: var(--red); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px;
+}
+.badge.star { background: var(--mustard); left:auto; right:8px; }
+.card-body { padding: 12px 14px 14px; }
+.card-cat { font-size: 11px; color: var(--text-soft); margin-bottom: 2px; }
+.card-name { font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+.price-row { display:flex; align-items: baseline; gap: 8px; }
+.price { font-family:'Archivo'; font-weight: 700; font-size: 17px; }
+.price.sale { color: var(--red); }
+.price-old { font-size: 12px; color: var(--text-soft); text-decoration: line-through; }
+
+.filters { display:flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.chip {
+  border: 1px solid var(--border); background: var(--surface);
+  padding: 6px 13px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.chip.active { background: var(--green-700); border-color: var(--green-700); color: #fff; }
+
+.info-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media (max-width: 640px) { .info-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 27px; } }
+.info-block { font-size: 14px; }
+.info-block h3 { font-size: 13px; text-transform: none; color: var(--text-soft); font-weight: 600; margin-bottom: 6px; }
+.info-block p { margin: 0 0 4px; }
+.review { border-left: 2px solid var(--border); padding-left: 12px; margin-bottom: 12px; font-size: 13px; color: var(--text-soft); font-style: italic; }
+
+/* PANEL SHARED */
+.panel-shell { max-width: 640px; margin: 0 auto; padding: 30px 20px 60px; }
+.panel-login { max-width: 340px; margin: 60px auto; padding: 0 20px; text-align:center; }
+.panel-login h2 { font-size: 20px; margin-bottom: 6px; }
+.panel-login p { color: var(--text-soft); font-size: 13px; margin: 0 0 22px; }
+.field { text-align: left; margin-bottom: 14px; }
+.field label { display:block; font-size: 12px; font-weight: 600; color: var(--text-soft); margin-bottom: 5px; }
+.field input, .field select { width: 100%; padding: 10px 12px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; font-size: 14px; }
+.btn { background: var(--green-700); color: #fff; border: none; padding: 10px 18px; border-radius: 7px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.btn.secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn.ghost { background: transparent; border: none; color: var(--red); font-weight: 600; padding: 6px 10px; }
+.btn-row { display:flex; gap: 10px; flex-wrap: wrap; }
+
+.panel-header { display:flex; justify-content: space-between; align-items:center; margin-bottom: 22px; flex-wrap: wrap; gap: 10px; }
+.panel-header .who { font-size: 13px; color: var(--text-soft); }
+.panel-header .who strong { color: var(--text); }
+
+.plist { display:flex; flex-direction:column; gap: 10px; }
+.prow {
+  display:flex; align-items:center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 9px; padding: 12px 14px;
+  flex-wrap: wrap;
+}
+.prow-icon { width: 36px; height:36px; border-radius: 7px; background: var(--cream); display:flex; align-items:center; justify-content:center; font-size: 18px; flex-shrink: 0; }
+[data-theme="dark"] .prow-icon, body:not([data-theme="light"]) .prow-icon { background:#262819; }
+.prow-main { flex: 1; min-width: 140px; }
+.prow-name { font-weight: 600; font-size: 14px; }
+.prow-cat { font-size: 12px; color: var(--text-soft); }
+.prow-price { display:flex; align-items:center; gap: 6px; }
+.prow-price input { width: 78px; padding: 7px 8px; border-radius: 6px; border:1px solid var(--border); background: var(--bg); color: var(--text); font: inherit; font-size: 13px; }
+.toggle-set { display:flex; gap: 6px; }
+.toggle {
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-soft);
+  font-size: 11px; font-weight: 700; padding: 5px 9px; border-radius: 999px; cursor: pointer;
+}
+.toggle.on.sale { background: var(--red); border-color: var(--red); color: #fff; }
+.toggle.on.star { background: var(--mustard); border-color: var(--mustard); color: #fff; }
+.savebtn { background: var(--green-700); color:#fff; border:none; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+.tabbed { display:flex; gap: 6px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.tabbed button { background:none; border:none; padding: 8px 4px 10px; font: inherit; font-weight: 600; font-size: 13px; color: var(--text-soft); cursor:pointer; border-bottom: 2px solid transparent; margin-right: 16px; }
+.tabbed button.active { color: var(--text); border-bottom-color: var(--green-700); }
+
+.subview { display:none; }
+.subview.active { display:block; }
+
+.log-row { display:flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.log-row:last-child { border-bottom:none; }
+.log-who { color: var(--text-soft); font-size: 12px; }
+.log-change { font-weight: 600; }
+.log-change .old { color: var(--text-soft); text-decoration: line-through; font-weight: 400; margin-right: 4px;}
+
+.toast {
+  position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%);
+  background: var(--green-900); color: #F1EFE6; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 50;
+}
+.toast.show { opacity: 1; }
+
+.mock-note { font-size: 12px; color: var(--text-soft); background: var(--surface); border: 1px dashed var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<div class="mode-bar">
+  <div class="mode-inner">
+    <div>
+      <div class="mode-title">Mercado Ponto Bom — mockup</div>
+      <div class="mode-tag">Demonstração de fluxo · dados fictícios, apenas alguns itens</div>
+    </div>
+    <div class="mode-tabs">
+      <button id="tab-site" class="active" onclick="setMode('site')">Site público</button>
+      <button id="tab-worker" onclick="setMode('worker')">Painel funcionário</button>
+      <button id="tab-admin" onclick="setMode('admin')">Painel admin</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SITE ================= -->
+<div id="view-site">
+  <div class="site-nav">
+    <div class="site-nav-inner">
+      <div class="brand"><div class="brand-mark">PB</div><div class="brand-name">Mercado Ponto Bom</div></div>
+      <div class="site-links">
+        <button class="active" data-site="home" onclick="setSite('home')">Início</button>
+        <button data-site="catalogo" onclick="setSite('catalogo')">Catálogo</button>
+        <button data-site="ofertas" onclick="setSite('ofertas')">Ofertas</button>
+        <button data-site="sobre" onclick="setSite('sobre')">Sobre / Contato</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-home" class="site-page">
+    <div class="hero">
+      <div class="hero-inner">
+        <h1>Supermercado de bairro em Cidade Exemplo, com açougue e padaria próprios.</h1>
+        <div class="hero-meta">
+          <div class="rating-row"><span class="stars">★★★★★</span><strong>4,4</strong><span>· avaliações demonstrativas</span></div>
+          <span class="pill open">Aberto agora · fecha 21:00</span>
+          <span>Rua do Mercado, 120 — Centro, Cidade Exemplo - RS</span>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h2 class="section-title">Ofertas da semana</h2>
+      <p class="section-sub">Itens marcados como promoção aparecem aqui automaticamente.</p>
+      <div class="grid" id="home-ofertas"></div>
+    </div>
+    <div class="section" style="padding-top:0;">
+      <h2 class="section-title">Mais vendidos</h2>
+      <p class="section-sub">Produtos marcados como destaque pelo time.</p>
+      <div class="grid" id="home-destaques"></div>
+    </div>
+  </div>
+
+  <div id="site-catalogo" class="site-page" style="display:none;">
+    <div class="section">
+      <h2 class="section-title">Catálogo</h2>
+      <p class="section-sub">Filtro por categoria — a busca completa entraria aqui.</p>
+      <div class="filters" id="cat-filters"></div>
+      <div class="grid" id="catalog-grid"></div>
+    </div>
+  </div>
+
+  <div id="site-ofertas" class="site-page" style="display:none;">
+    <div class="section">
+      <h2 class="section-title">Todas as ofertas</h2>
+      <p class="section-sub">Todo item com <code style="font-family:inherit;">em_promocao = true</code>.</p>
+      <div class="grid" id="ofertas-grid"></div>
+    </div>
+  </div>
+
+  <div id="site-sobre" class="site-page" style="display:none;">
+    <div class="section">
+      <h2 class="section-title">Endereço e contato</h2>
+      <div class="info-grid" style="margin-top:16px;">
+        <div class="info-block">
+          <h3>Endereço</h3>
+          <p>Rua do Mercado, 120</p>
+          <p>Centro, Cidade Exemplo - RS</p>
+          <h3 style="margin-top:16px;">Horário</h3>
+          <p>Aberto todos os dias · fecha 21:00</p>
+          <h3 style="margin-top:16px;">Contato</h3>
+          <p>Informações demonstrativas</p>
+          <p>Redes sociais demonstrativas</p>
+        </div>
+        <div class="info-block">
+          <h3>Avaliações recentes</h3>
+          <div class="review">"Lugar ótimo, boa localização, variedade de produtos e bom atendimento!"</div>
+          <div class="review">"Agora, com oferta de pães, serviço de padaria maravilhoso."</div>
+          <div class="review">"Açougue bem organizado, não tem cheiro, tem promoção de carnes."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WORKER ================= -->
+<div id="view-worker">
+  <div id="worker-login" class="panel-login">
+    <h2>Login do funcionário</h2>
+    <p>Entrar com número de funcionário e senha.</p>
+    <div class="field"><label>Número do funcionário</label><input value="102" placeholder="ex: 102"></div>
+    <div class="field"><label>Senha</label><input type="password" value="••••••"></div>
+    <button class="btn" style="width:100%;" onclick="loginAs('worker')">Entrar</button>
+  </div>
+
+  <div id="worker-dash" class="panel-shell" style="display:none;">
+    <div class="mock-note">Mockup: editar preço grava automaticamente em <strong>price_log</strong> com o número do funcionário. Marcar promoção/destaque atualiza o produto na hora.</div>
+    <div class="panel-header">
+      <div class="who">Logado como <strong>Marcos · Funcionário Nº 102</strong></div>
+      <button class="btn ghost" onclick="logout('worker')">Sair</button>
+    </div>
+    <div class="tabbed">
+      <button class="active" data-wtab="produtos" onclick="setWorkerTab('produtos')">Produtos</button>
+      <button data-wtab="novo" onclick="setWorkerTab('novo')">Cadastrar produto</button>
+    </div>
+    <div class="subview active" id="wtab-produtos">
+      <div class="plist" id="worker-plist"></div>
+    </div>
+    <div class="subview" id="wtab-novo">
+      <div class="field"><label>Nome do produto</label><input placeholder="ex: Detergente Ypê 500ml"></div>
+      <div class="field"><label>Categoria</label>
+        <select><option>Hortifruti</option><option>Padaria</option><option>Açougue</option><option>Mercearia</option><option>Limpeza</option></select>
+      </div>
+      <div class="field"><label>Preço</label><input placeholder="R$ 0,00"></div>
+      <button class="btn" onclick="fakeSave('Produto cadastrado (mockup)')">Cadastrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADMIN ================= -->
+<div id="view-admin">
+  <div id="admin-login" class="panel-login">
+    <h2>Login do administrador</h2>
+    <p>Acesso completo: produtos, funcionários, categorias e histórico.</p>
+    <div class="field"><label>Número</label><input value="001" placeholder="ex: 001"></div>
+    <div class="field"><label>Senha</label><input type="password" value="••••••"></div>
+    <button class="btn" style="width:100%;" onclick="loginAs('admin')">Entrar</button>
+  </div>
+
+  <div id="admin-dash" class="panel-shell" style="max-width:720px; display:none;">
+    <div class="panel-header">
+      <div class="who">Logado como <strong>Equipe · Admin</strong></div>
+      <button class="btn ghost" onclick="logout('admin')">Sair</button>
+    </div>
+    <div class="tabbed">
+      <button class="active" data-atab="produtos" onclick="setAdminTab('produtos')">Produtos</button>
+      <button data-atab="funcionarios" onclick="setAdminTab('funcionarios')">Funcionários</button>
+      <button data-atab="categorias" onclick="setAdminTab('categorias')">Categorias</button>
+      <button data-atab="historico" onclick="setAdminTab('historico')">Histórico de preços</button>
+      <button data-atab="loja" onclick="setAdminTab('loja')">Dados da loja</button>
+    </div>
+
+    <div class="subview active" id="atab-produtos">
+      <div class="plist" id="admin-plist"></div>
+    </div>
+
+    <div class="subview" id="atab-funcionarios">
+      <div class="plist" id="admin-workers"></div>
+      <button class="btn secondary" style="margin-top:12px;" onclick="fakeSave('Funcionário criado (mockup)')">+ Novo funcionário</button>
+    </div>
+
+    <div class="subview" id="atab-categorias">
+      <div class="plist" id="admin-categories"></div>
+      <button class="btn secondary" style="margin-top:12px;" onclick="fakeSave('Categoria criada (mockup)')">+ Nova categoria</button>
+    </div>
+
+    <div class="subview" id="atab-historico">
+      <div id="admin-log"></div>
+    </div>
+
+    <div class="subview" id="atab-loja">
+      <div class="field"><label>Endereço</label><input value="Rua do Mercado, 120 - Centro, Cidade Exemplo - RS"></div>
+      <div class="field"><label>Horário</label><input value="Todos os dias, até 21:00"></div>
+      <div class="field"><label>Contato</label><input value="Informações demonstrativas"></div>
+      <button class="btn" onclick="fakeSave('Dados da loja salvos (mockup)')">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = [
+  {id:1, name:'Alface crespa', cat:'Hortifruti', icon:'🥬', price:3.49, oldPrice:null, sale:false, star:true},
+  {id:2, name:'Pão francês (kg)', cat:'Padaria', icon:'🥖', price:12.90, oldPrice:15.90, sale:true, star:true},
+  {id:3, name:'Picanha (kg)', cat:'Açougue', icon:'🥩', price:54.90, oldPrice:64.90, sale:true, star:false},
+  {id:4, name:'Arroz tipo 1 (5kg)', cat:'Mercearia', icon:'🌾', price:24.50, oldPrice:null, sale:false, star:true},
+  {id:5, name:'Detergente Ypê', cat:'Limpeza', icon:'🧴', price:2.79, oldPrice:3.49, sale:true, star:false},
+  {id:6, name:'Banana prata (kg)', cat:'Hortifruti', icon:'🍌', price:5.99, oldPrice:null, sale:false, star:false},
+];
+const CATS = ['Todos','Hortifruti','Padaria','Açougue','Mercearia','Limpeza'];
+const WORKERS = [
+  {num:'102', name:'Marcos', active:true},
+  {num:'118', name:'Fernanda', active:true},
+  {num:'094', name:'Diego', active:false},
+];
+const LOG = [
+  {product:'Picanha (kg)', old:'R$ 59,90', now:'R$ 54,90', who:'Marcos · #102', when: 'hoje, 09:12'},
+  {product:'Pão francês (kg)', old:'R$ 14,90', now:'R$ 12,90', who:'Fernanda · #118', when: 'ontem, 17:40'},
+  {product:'Detergente Ypê', old:'R$ 3,49', now:'R$ 2,79', who:'Marcos · #102', when: '2 dias atrás'},
+];
+let activeCatalogFilter = 'Todos';
+
+function money(v){ return 'R$ ' + v.toFixed(2).replace('.', ','); }
+
+function productCard(p){
+  return `<div class="card">
+    <div class="card-img">${p.icon}
+      ${p.sale ? '<span class="badge">Promoção</span>' : (p.star ? '<span class="badge star">Destaque</span>' : '')}
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${p.cat}</div>
+      <div class="card-name">${p.name}</div>
+      <div class="price-row">
+        <div class="price ${p.sale?'sale':''}">${money(p.price)}</div>
+        ${p.oldPrice ? `<div class="price-old">${money(p.oldPrice)}</div>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderSite(){
+  document.getElementById('home-ofertas').innerHTML = PRODUCTS.filter(p=>p.sale).map(productCard).join('') || '<p style="color:var(--text-soft); font-size:13px;">Nenhuma oferta ativa.</p>';
+  document.getElementById('home-destaques').innerHTML = PRODUCTS.filter(p=>p.star).map(productCard).join('');
+  document.getElementById('ofertas-grid').innerHTML = PRODUCTS.filter(p=>p.sale).map(productCard).join('');
+  document.getElementById('cat-filters').innerHTML = CATS.map(c=>`<button class="chip ${c===activeCatalogFilter?'active':''}" onclick="filterCatalog('${c}')">${c}</button>`).join('');
+  const list = activeCatalogFilter==='Todos' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===activeCatalogFilter);
+  document.getElementById('catalog-grid').innerHTML = list.map(productCard).join('');
+}
+function filterCatalog(c){ activeCatalogFilter = c; renderSite(); }
+
+function setSite(page){
+  document.querySelectorAll('.site-page').forEach(el=>el.style.display='none');
+  document.getElementById('site-'+page).style.display='block';
+  document.querySelectorAll('.site-links button').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.site-links button[data-site="${page}"]`).classList.add('active');
+}
+
+function prowEditable(p, prefix){
+  return `<div class="prow" data-id="${p.id}">
+    <div class="prow-icon">${p.icon}</div>
+    <div class="prow-main">
+      <div class="prow-name">${p.name}</div>
+      <div class="prow-cat">${p.cat}</div>
+    </div>
+    <div class="prow-price">
+      <span style="font-size:12px;color:var(--text-soft);">R$</span>
+      <input type="text" value="${p.price.toFixed(2).replace('.',',')}" id="${prefix}-price-${p.id}">
+      <button class="savebtn" onclick="savePrice(${p.id}, '${prefix}')">Salvar</button>
+    </div>
+    <div class="toggle-set">
+      <button class="toggle ${p.sale?'on sale':''}" onclick="toggleFlag(${p.id}, 'sale', '${prefix}')">Promoção</button>
+      <button class="toggle ${p.star?'on star':''}" onclick="toggleFlag(${p.id}, 'star', '${prefix}')">Destaque</button>
+    </div>
+  </div>`;
+}
+
+function renderWorkerAndAdminLists(){
+  document.getElementById('worker-plist').innerHTML = PRODUCTS.map(p=>prowEditable(p,'w')).join('');
+  document.getElementById('admin-plist').innerHTML = PRODUCTS.map(p=>prowEditable(p,'a')).join('');
+  document.getElementById('admin-workers').innerHTML = WORKERS.map(w=>`
+    <div class="prow">
+      <div class="prow-icon">👤</div>
+      <div class="prow-main"><div class="prow-name">${w.name} · #${w.num}</div><div class="prow-cat">${w.active?'Ativo':'Inativo'}</div></div>
+      <div class="btn-row">
+        <button class="toggle ${w.active?'':'on sale'}" onclick="fakeSave('${w.active?'Funcionário desativado':'Funcionário reativado'} (mockup)')">${w.active?'Desativar':'Reativar'}</button>
+        <button class="toggle" onclick="fakeSave('Senha resetada (mockup)')">Resetar senha</button>
+      </div>
+    </div>`).join('');
+  document.getElementById('admin-categories').innerHTML = [...new Set(PRODUCTS.map(p=>p.cat))].map(c=>`
+    <div class="prow"><div class="prow-icon">🏷️</div><div class="prow-main"><div class="prow-name">${c}</div></div>
+    <button class="toggle" onclick="fakeSave('Categoria editada (mockup)')">Editar</button></div>`).join('');
+  document.getElementById('admin-log').innerHTML = LOG.map(l=>`
+    <div class="log-row">
+      <div><div class="log-change"><span class="old">${l.old}</span> ${l.now}</div><div class="log-who">${l.product}</div></div>
+      <div class="log-who" style="text-align:right;">${l.who}<br>${l.when}</div>
+    </div>`).join('');
+}
+
+function savePrice(id, prefix){
+  const p = PRODUCTS.find(x=>x.id===id);
+  const input = document.getElementById(`${prefix}-price-${id}`);
+  const val = parseFloat(input.value.replace(',', '.'));
+  if(!isNaN(val)){
+    LOG.unshift({product:p.name, old: money(p.price), now: money(val), who: prefix==='w' ? 'Marcos · #102' : 'Equipe · Admin', when: 'agora'});
+    p.price = val;
+  }
+  renderSite(); renderWorkerAndAdminLists();
+  showToast('Preço salvo e registrado no histórico');
+}
+function toggleFlag(id, flag, prefix){
+  const p = PRODUCTS.find(x=>x.id===id);
+  p[flag] = !p[flag];
+  renderSite(); renderWorkerAndAdminLists();
+  showToast(flag==='sale' ? (p.sale?'Marcado como promoção':'Promoção removida') : (p.star?'Marcado como destaque':'Destaque removido'));
+}
+function fakeSave(msg){ showToast(msg); }
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+function setMode(mode){
+  ['site','worker','admin'].forEach(m=>{
+    document.getElementById('view-'+m).style.display = (m===mode)?'block':'none';
+    document.getElementById('tab-'+m).classList.toggle('active', m===mode);
+  });
+}
+function loginAs(role){
+  document.getElementById(role+'-login').style.display = 'none';
+  document.getElementById(role+'-dash').style.display = 'block';
+}
+function logout(role){
+  document.getElementById(role+'-login').style.display = 'block';
+  document.getElementById(role+'-dash').style.display = 'none';
+}
+function setWorkerTab(tab){
+  document.querySelectorAll('#view-worker .tabbed button').forEach(b=>b.classList.toggle('active', b.dataset.wtab===tab));
+  document.querySelectorAll('#view-worker .subview').forEach(s=>s.classList.remove('active'));
+  document.getElementById('wtab-'+tab).classList.add('active');
+}
+function setAdminTab(tab){
+  document.querySelectorAll('#view-admin .tabbed button').forEach(b=>b.classList.toggle('active', b.dataset.atab===tab));
+  document.querySelectorAll('#view-admin .subview').forEach(s=>s.classList.remove('active'));
+  document.getElementById('atab-'+tab).classList.add('active');
+}
+
+renderSite();
+renderWorkerAndAdminLists();
+</script>
+</body>
+</html>

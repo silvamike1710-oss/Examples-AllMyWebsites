@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monte seu pedido — Bolos da Salette</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main/style.css?v=2">
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="/">Bolos da Salette</a><p>Monte seu pedido em poucos toques</p></header>
+
+<div class="layout">
+<main class="card">
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="bolos">🎂 Bolos</button>
+    <button role="tab" aria-selected="false" data-tab="salgados">🥟 Salgados</button>
+    <button role="tab" aria-selected="false" data-tab="doces">🍬 Doces</button>
+  </div>
+
+  <section id="p-bolos">
+    <label class="f">1. Sabores <span style="font-weight:400;color:var(--mute)">(até 3 no mesmo bolo)</span></label>
+    <div id="flavors"></div>
+    <button class="btn alt" id="addFlavor" type="button" style="margin-top:8px;padding:8px 14px;font-size:14px">+ Adicionar outro sabor</button>
+    <label class="f" for="size">2. Tamanho</label>
+    <select id="size"></select>
+    <div class="row" style="margin-top:12px">
+      <div><label class="f" for="cakeNote" style="margin-top:0">Decoração / observação</label>
+      <input type="text" id="cakeNote" placeholder="Ex.: tema do time, rosetas..."></div>
+      <div style="flex:0 0 auto"><label class="f" style="margin-top:0">Qtd.</label>
+      <div class="stepper"><button data-cq="-1" aria-label="Menos">−</button><span id="cq">1</span><button data-cq="1" aria-label="Mais">+</button></div></div>
+    </div>
+    <div class="preview"><span id="cakeTxt"></span><b id="cakePrice"></b></div>
+    <button class="btn" id="addCake" style="width:100%">Adicionar bolo ao pedido</button>
+  </section>
+
+  <section id="p-salgados" hidden>
+    <p class="note">Cento a R$ 120. Ajuste em blocos de 25 unidades (R$ 30) e misture os sabores como quiser.</p>
+    <div id="l-salgados"></div>
+    <div class="sec">Cascas avulsas</div>
+    <div id="l-cascas"></div>
+  </section>
+
+  <section id="p-doces" hidden>
+    <p class="note">Cento a R$ 120. Ajuste em blocos de 25 unidades (R$ 30).</p>
+    <div id="l-doces"></div>
+  </section>
+</main>
+
+<aside class="card summary" id="summary">
+  <h2 style="font-size:20px">Seu pedido</h2>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="total">R$ 0</span></div>
+  <label class="f" for="nm" style="margin-top:0">Nome</label>
+  <input type="text" id="nm" autocomplete="name" placeholder="Seu nome">
+  <label class="f" for="em">E-mail</label>
+  <input class="customer-email" type="email" id="em" autocomplete="email" maxlength="254" placeholder="seu@email.com">
+  <label class="f" for="ph">Telefone / WhatsApp</label>
+  <input type="tel" id="ph" autocomplete="tel" placeholder="(55) 9...">
+  <label class="f" for="dt">Data de coleta</label>
+  <input type="date" id="dt">
+  <label class="hp" for="website">Deixe este campo vazio</label>
+  <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+  <div class="actions">
+    <button class="btn wa" id="sendWa" disabled>Enviar pelo WhatsApp</button>
+    <button class="btn alt" id="sendMail" disabled>Enviar por e-mail</button>
+  </div>
+  <p class="note" style="margin-top:10px">O pedido vira um texto pronto; o valor final é confirmado pela Salette.</p>
+</aside>
+</div>
+</div>
+
+<div class="bar"><span>Total <b id="barTotal">R$ 0</b></span><button class="btn" onclick="document.getElementById('summary').scrollIntoView({behavior:'smooth'})">Ver pedido</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite">Adicionado!</div>
+
+<script src="main/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sorriso do Vale — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal-900: #12332F;
+  --teal-700: #1D4E48;
+  --sand: #F2EFE7;
+  --paper: #FCFBF7;
+  --ink: #1B211F;
+  --ink-soft: #58635F;
+  --line: #DCD7C9;
+  --gold: #C79A3C;
+  --coral: #C65B3E;
+  --bg: var(--sand);
+  --surface: var(--paper);
+  --text: var(--ink);
+  --text-soft: var(--ink-soft);
+  --border: var(--line);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: border-box;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12140F; --surface: #1B1E17; --text: #ECE9DD; --text-soft: #ACA895; --border: #33362A;
+  }
+}
+:root[data-theme="dark"] { --bg: #12140F; --surface: #1B1E17; --text: #ECE9DD; --text-soft: #ACA895; --border: #33362A; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+body { margin:0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.55; }
+h1,h2,h3 { font-family: 'Lora', serif; color: var(--text); margin:0; font-weight: 600; }
+a { color: inherit; }
+
+.site-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top:0; z-index:5; padding-top: env(safe-area-inset-top, 0px); }
+.site-nav-inner { max-width: 1040px; margin:0 auto; padding: 16px 20px; display:flex; align-items:center; gap:26px; flex-wrap: wrap; }
+.brand { display:flex; align-items:center; gap:10px; }
+.brand-mark { width:34px; height:34px; border-radius:50%; background: var(--teal-700); display:flex; align-items:center; justify-content:center; color:#EFEBDC; font-family:'Lora'; font-weight:600; font-size:14px; }
+.brand-name { font-family:'Lora'; font-weight:600; font-size:17px; }
+.site-links { display:flex; gap:20px; font-size:14px; font-weight:600; color: var(--text-soft); }
+.site-links button { background:none; border:none; cursor:pointer; font:inherit; color:inherit; padding:4px 0; border-bottom:2px solid transparent; }
+.site-links button.active { color: var(--text); border-bottom-color: var(--coral); }
+.cta-nav { margin-left:auto; }
+
+.btn { background: var(--coral); color:#fff; border:none; padding:11px 20px; border-radius: 7px; font-weight:700; font-size:14px; cursor:pointer; font-family: inherit; text-decoration:none; display:inline-block; }
+
+.section { max-width: 1040px; margin:0 auto; padding: 40px 20px; }
+.hero { padding: 44px 20px 36px; border-bottom: 1px solid var(--border); }
+.hero-inner { max-width:1040px; margin:0 auto; display:flex; gap:34px; flex-wrap:wrap; align-items:flex-end; justify-content: space-between; }
+.hero h1 { font-size: 32px; max-width: 480px; }
+.hero-meta { display:flex; flex-direction:column; gap:7px; font-size:14px; color:var(--text-soft); min-width:220px; }
+.rating-row { display:flex; align-items:center; gap:8px; }
+.stars { color: var(--gold); font-size:15px; letter-spacing:1px; }
+.pill { display:inline-flex; align-items:center; gap:6px; background: var(--surface); border:1px solid var(--border); padding:4px 10px; border-radius:999px; font-size:12px; font-weight:600; width: fit-content; }
+.pill.open { color: var(--teal-700); }
+.pill.open::before { content:''; width:6px; height:6px; border-radius:50%; background: var(--teal-700); }
+
+h2.section-title { font-size: 21px; margin-bottom: 4px; }
+.section-sub { color: var(--text-soft); font-size:14px; margin-bottom: 22px; }
+
+.services-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:16px; }
+.service-card { background: var(--surface); border:1px solid var(--border); border-radius:10px; padding: 18px; }
+.service-icon { font-size: 24px; margin-bottom: 10px; }
+.service-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.service-desc { font-size: 13px; color: var(--text-soft); margin-bottom: 10px; }
+.service-price { font-size: 13px; font-weight: 700; color: var(--teal-700); }
+
+.team-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:18px; }
+.team-photo { width:100%; aspect-ratio: 1; border-radius: 10px; background: var(--surface); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:34px; margin-bottom:10px; }
+.team-name { font-weight:600; font-size:14px; }
+.team-role { font-size:12px; color: var(--text-soft); }
+
+.info-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media (max-width:640px){ .info-grid{grid-template-columns:1fr;} .hero h1{font-size:26px;} .hero-inner{align-items:flex-start;} }
+.info-block { font-size:14px; }
+.info-block h3 { font-size:13px; color: var(--text-soft); font-weight:600; margin-bottom:6px; }
+.info-block p { margin:0 0 4px; }
+.review { border-left:2px solid var(--border); padding-left:12px; margin-bottom:12px; font-size:13px; color: var(--text-soft); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="site-nav">
+  <div class="site-nav-inner">
+    <div class="brand"><div class="brand-mark">SV</div><div class="brand-name">Sorriso do Vale</div></div>
+    <div class="site-links">
+      <button class="active" data-site="home" onclick="setSite('home')">Início</button>
+      <button data-site="servicos" onclick="setSite('servicos')">Serviços</button>
+      <button data-site="equipe" onclick="setSite('equipe')">Equipe</button>
+      <button data-site="contato" onclick="setSite('contato')">Contato</button>
+    </div>
+    <div class="cta-nav"><a class="btn" href="#site-contato" onclick="setSite('contato')">Contato</a></div>
+  </div>
+</div>
+
+<div id="site-home" class="site-page">
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>Clínica odontológica de bairro cuidando de famílias inteiras.</h1>
+      <div class="hero-meta">
+        <div class="rating-row"><span class="stars">★★★★★</span><strong>4,3</strong><span>· 17 avaliações no Google</span></div>
+        <span class="pill open">Aberto agora · fecha 19:00</span>
+        <span>Rua das Flores, 120 · Centro, Cidade Exemplo</span>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">Serviços em destaque</h2>
+    <p class="section-sub">Uma amostra do que a clínica oferece — a lista completa vem em "Serviços".</p>
+    <div class="services-grid" id="home-services"></div>
+  </div>
+</div>
+
+<div id="site-servicos" class="site-page" style="display:none;">
+  <div class="section">
+    <h2 class="section-title">Serviços</h2>
+    <p class="section-sub">Procedimentos oferecidos pela clínica.</p>
+    <div class="services-grid" id="all-services"></div>
+  </div>
+</div>
+
+<div id="site-equipe" class="site-page" style="display:none;">
+  <div class="section">
+    <h2 class="section-title">Equipe</h2>
+    <p class="section-sub">Dentistas responsáveis pelos atendimentos.</p>
+    <div class="team-grid" id="team-grid"></div>
+  </div>
+</div>
+
+<div id="site-contato" class="site-page" style="display:none;">
+  <div class="section">
+    <h2 class="section-title">Endereço e contato</h2>
+    <div class="info-grid" style="margin-top:16px;">
+      <div class="info-block">
+        <h3>Endereço</h3>
+        <p>Rua das Flores, 120</p>
+        <p>Centro, Cidade Exemplo - RS</p>
+        <h3 style="margin-top:16px;">Horário</h3>
+        <p>Seg. a sex. · até 19:00</p>
+        <h3 style="margin-top:16px;">Contato</h3>
+        <p>Informações demonstrativas</p>
+      </div>
+      <div class="info-block">
+        <h3>Avaliações recentes</h3>
+        <div class="review">"Muito boa, meu filho saiu muito satisfeito."</div>
+        <div class="review">"Atendimento atencioso, explicam tudo antes de fazer."</div>
+        <div class="review">"Consegui horário rápido, equipe bem gentil."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SERVICES = [
+  {name:'Limpeza e profilaxia', icon:'🦷', desc:'Remoção de placa e tártaro', price:'a partir de R$ 120'},
+  {name:'Restauração', icon:'🩹', desc:'Tratamento de cáries', price:'a partir de R$ 180'},
+  {name:'Clareamento dental', icon:'✨', desc:'Sessão em consultório', price:'a partir de R$ 350'},
+  {name:'Avaliação infantil', icon:'🧒', desc:'Primeira consulta, até 12 anos', price:'a partir de R$ 90'},
+  {name:'Extração', icon:'🔧', desc:'Inclui avaliação por raio-x', price:'a partir de R$ 150'},
+];
+const TEAM = [
+  {name:'Dra. Vitória Lemos', role:'Cirurgiã-dentista · CRO 4021', icon:'🦷'},
+  {name:'Dr. Henrique Alves', role:'Odontopediatria · CRO 3872', icon:'🦷'},
+  {name:'Dra. Camila Ferraz', role:'Ortodontia · CRO 4590', icon:'🦷'},
+];
+
+function serviceCard(s){
+  return `<div class="service-card">
+    <div class="service-icon">${s.icon}</div>
+    <div class="service-name">${s.name}</div>
+    <div class="service-desc">${s.desc}</div>
+    <div class="service-price">${s.price}</div>
+  </div>`;
+}
+
+document.getElementById('home-services').innerHTML = SERVICES.slice(0,3).map(serviceCard).join('');
+document.getElementById('all-services').innerHTML = SERVICES.map(serviceCard).join('');
+document.getElementById('team-grid').innerHTML = TEAM.map(t=>`
+  <div><div class="team-photo">${t.icon}</div><div class="team-name">${t.name}</div><div class="team-role">${t.role}</div></div>`).join('');
+
+function setSite(page){
+  document.querySelectorAll('.site-page').forEach(el=>el.style.display='none');
+  document.getElementById('site-'+page).style.display='block';
+  document.querySelectorAll('.site-links button').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.site-links button[data-site="${page}"]`).classList.add('active');
+}
+</script>
+</body>
+</html>

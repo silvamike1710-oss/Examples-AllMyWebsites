@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clínica Aurora — Saúde Integrada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#8FD0E8;
+    --sky-deep:#4FA7C9;
+    --ink:#16324A;
+    --paper:#FBFCFD;
+    --mist:#EAF6FA;
+    --line: rgba(22,50,74,0.12);
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior:smooth;}
+  html,body{height:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  h1,h2,h3{font-family:'Sora',sans-serif;font-weight:600;letter-spacing:-0.01em;line-height:1.1;color:var(--ink);}
+
+  header.top{
+    position:sticky; top:0; z-index:10;
+    top: env(safe-area-inset-top, 0px);
+    background:rgba(251,252,253,0.9);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1080px;margin:0 auto;}
+  .brand{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:700;}
+  .brand span{color:var(--sky-deep);}
+  .topbar a.cta{
+    color:#fff; background:var(--sky-deep); padding:10px 20px; border-radius:99px;
+    text-decoration:none; font-weight:600; font-size:0.88rem;
+  }
+
+  .hero{padding:64px 0 40px; position:relative;}
+  .hero::before{
+    content:""; position:absolute; top:-60px; right:-120px; width:420px; height:420px;
+    background:var(--mist); border-radius:50%; z-index:-1;
+  }
+  .hero .kicker{color:var(--sky-deep); font-size:0.92rem; font-weight:600; margin-bottom:14px;}
+  .hero h1{font-size:clamp(2.3rem,5.5vw,3.6rem); max-width:15ch;}
+  .hero p.lede{max-width:48ch; margin-top:20px; font-size:1.05rem; color:rgba(22,50,74,0.72);}
+  .hero .buttons{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn-primary{background:var(--sky-deep); color:#fff; padding:14px 26px; border-radius:99px; text-decoration:none; font-weight:600;}
+  .btn-ghost{border:1px solid var(--line); color:var(--ink); padding:14px 26px; border-radius:99px; text-decoration:none; font-weight:500;}
+
+  .stats{display:flex; gap:0; margin-top:52px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); flex-wrap:wrap;}
+  .stat{flex:1; min-width:150px; padding:24px 20px; border-right:1px solid var(--line);}
+  .stat b{display:block; font-family:'Sora',sans-serif; font-size:2rem; color:var(--sky-deep);}
+  .stat span{font-size:0.88rem; color:rgba(22,50,74,0.6);}
+
+  section{padding:56px 0;}
+  .section-head{margin-bottom:32px; max-width:52ch;}
+  .section-head .eyebrow{color:var(--sky-deep); font-size:0.9rem; font-weight:600; margin-bottom:8px;}
+  .section-head h2{font-size:clamp(1.6rem,3.2vw,2.1rem);}
+  .section-head p{margin-top:10px; color:rgba(22,50,74,0.65); font-size:0.98rem;}
+
+  .specialties{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;}
+  .spec-card{background:var(--mist); border-radius:16px; padding:24px;}
+  .spec-card h3{font-size:1.05rem; margin-bottom:8px;}
+  .spec-card p{font-size:0.9rem; color:rgba(22,50,74,0.68);}
+
+  .reviews{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px;}
+  .review{background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px;}
+  .review .stars{color:var(--sky-deep); letter-spacing:2px; font-size:0.9rem; margin-bottom:10px;}
+  .review p{font-size:0.98rem; color:rgba(22,50,74,0.82); font-style:italic;}
+
+  .bottom-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start;}
+  @media (max-width:720px){ .bottom-grid{grid-template-columns:1fr;} }
+  .info-row{display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--line);}
+  .info-row .label{width:100px; flex-shrink:0; color:var(--sky-deep); font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;}
+  .info-row .val{font-size:0.98rem; color:rgba(22,50,74,0.85);}
+  .hours-box{background:var(--mist); border-radius:16px; padding:24px;}
+  .hours-box h3{font-size:1rem; margin-bottom:14px;}
+  .hours-grid{display:grid; grid-template-columns:1fr auto; gap:8px 20px; font-size:0.92rem;}
+  .hours-grid .day{color:rgba(22,50,74,0.65);}
+  .hours-grid .today{color:var(--sky-deep); font-weight:600;}
+
+  .social-row{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;}
+  .social-row a{border:1px solid var(--line); border-radius:99px; padding:8px 16px; font-size:0.85rem; text-decoration:none; color:var(--ink);}
+
+  footer{padding:36px 0 48px; text-align:center; color:rgba(22,50,74,0.5); font-size:0.85rem; border-top:1px solid var(--line);}
+  footer a{color:var(--sky-deep); text-decoration:none;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1{animation:rise 0.6s ease-out both;}
+    @keyframes rise{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <div class="brand">Clínica <span>Aurora</span></div>
+    <a class="cta" href="#contato">Contato</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Centro · Cidade Exemplo</div>
+    <h1>Saúde bucal cuidada com atenção integral</h1>
+    <p class="lede">Atendimento odontológico completo, com uma equipe que acompanha você e sua família.</p>
+    <div class="buttons">
+      <a class="btn-primary" href="#contato">Agendar consulta</a>
+      <a class="btn-ghost" href="#contato">Ver contato</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>4,9</b><span>nota demonstrativa</span></div>
+      <div class="stat"><b>34</b><span>avaliações de exemplo</span></div>
+      <div class="stat"><b>Família</b><span>cuidado em todas as fases</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Especialidades</div>
+      <h2>Cuidado odontológico em todas as fases</h2>
+      <p>Uma equipe integrada para tratar cada necessidade com o mesmo padrão de atenção.</p>
+    </div>
+    <div class="specialties">
+      <div class="spec-card"><h3>Odontologia geral</h3><p>Consultas, limpeza e prevenção para toda a família.</p></div>
+      <div class="spec-card"><h3>Ortodontia</h3><p>Alinhamento e acompanhamento contínuo do sorriso.</p></div>
+      <div class="spec-card"><h3>Estética dental</h3><p>Clareamento e harmonização com resultado natural.</p></div>
+      <div class="spec-card"><h3>Odontopediatria</h3><p>Atendimento pensado para os pacientes mais novos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Avaliações</div>
+      <h2>O que dizem os pacientes</h2>
+    </div>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>Clínica com ótimo ambiente e atendimento primoroso.</p></div>
+      <div class="review"><div class="stars">★★★★★</div><p>Cliente há muitos anos — minha família toda é atendida aqui.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Contato</div>
+      <h2>Onde estamos</h2>
+    </div>
+    <div class="bottom-grid">
+      <div>
+        <div class="info-row"><div class="label">Endereço</div><div class="val">Rua das Flores, 120 — Centro, Cidade Exemplo - RS</div></div>
+        <div class="info-row"><div class="label">Contato</div><div class="val">Informações demonstrativas</div></div>
+        <div class="info-row"><div class="label">Status</div><div class="val">Abre em breve · 08:00</div></div>
+        <div class="social-row">Redes sociais demonstrativas</div>
+      </div>
+      <div class="hours-box">
+        <h3>Horário de funcionamento</h3>
+        <div class="hours-grid">
+          <div class="day">Segunda</div><div>08:00 – 18:00</div>
+          <div class="day">Terça</div><div>08:00 – 18:00</div>
+          <div class="day">Quarta</div><div class="today">08:00 – 18:00</div>
+          <div class="day">Quinta</div><div>08:00 – 18:00</div>
+          <div class="day">Sexta</div><div>08:00 – 18:00</div>
+          <div class="day">Sábado</div><div>Fechado</div>
+          <div class="day">Domingo</div><div>Fechado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Clínica Aurora Saúde Integrada · Rua das Flores, 120, Cidade Exemplo - RS</div>
+</footer>
+
+</body>
+</html>

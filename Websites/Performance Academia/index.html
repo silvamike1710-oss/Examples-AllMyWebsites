@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Impulso Fitness — Cidade Exemplo, RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1a1815;
+    --bg-alt:#221f1a;
+    --panel:#242019;
+    --accent:#ff4b26;
+    --text:#ece7de;
+    --text-dim:#a89d8c;
+    --line:#3a352c;
+    --radius:2px;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:0.01em; line-height:1.05;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---- header ---- */
+  header{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+    background:rgba(26,24,21,0.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+  .brand{font-family:'Oswald'; font-size:1.15rem; font-weight:700; letter-spacing:0.02em;}
+  .brand span{color:var(--accent);}
+  .nav-links{display:flex; gap:28px; font-size:0.92rem; color:var(--text-dim);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    background:var(--accent); color:#1a1815; font-weight:600; font-size:0.88rem;
+    padding:9px 18px; border-radius:var(--radius);
+  }
+  @media (max-width:700px){ .nav-links{display:none;} }
+
+  /* ---- hero ---- */
+  .hero{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--line);
+    background:
+      linear-gradient(180deg, transparent 0%, var(--bg) 92%),
+      repeating-linear-gradient(115deg, #201d18 0 2px, transparent 2px 34px);
+  }
+  .hero-grid{display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:end;}
+  .eyebrow{color:var(--text-dim); font-size:0.95rem; margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem); text-transform:uppercase;}
+  .hero h1 em{font-style:normal; color:var(--accent);}
+  .hero p{color:var(--text-dim); max-width:46ch; margin-top:22px; font-size:1.05rem;}
+  .hero-actions{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .btn{padding:14px 26px; font-weight:600; font-size:0.95rem; border-radius:var(--radius); display:inline-block;}
+  .btn-primary{background:var(--accent); color:#1a1815;}
+  .btn-ghost{border:1px solid var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);}
+
+  .rating-card{
+    border:1px solid var(--line); background:var(--panel); padding:26px;
+    border-radius:var(--radius);
+  }
+  .rating-num{font-family:'Oswald'; font-size:3.2rem; color:var(--accent); line-height:1;}
+  .stars{color:var(--accent); font-size:1.1rem; margin:8px 0 4px;}
+  .rating-sub{color:var(--text-dim); font-size:0.9rem;}
+  .rating-card .divider{height:1px; background:var(--line); margin:18px 0;}
+  .status-row{display:flex; justify-content:space-between; font-size:0.9rem;}
+  .status-open{color:#8fd67a;}
+
+  /* ---- section shell ---- */
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  .section-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:36px; gap:24px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem); text-transform:uppercase;}
+  .section-head p{color:var(--text-dim); max-width:38ch; font-size:0.95rem;}
+
+  /* ---- schedule ---- */
+  .sched-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:10px;}
+  .day{border:1px solid var(--line); padding:16px 10px; text-align:center; border-radius:var(--radius);}
+  .day .d{font-size:0.78rem; color:var(--text-dim); margin-bottom:10px;}
+  .bar-track{height:64px; display:flex; align-items:flex-end; justify-content:center; margin-bottom:10px;}
+  .bar{width:16px; background:var(--line); border-radius:1px;}
+  .day.peak .bar{background:var(--accent);}
+  .day .t{font-size:0.72rem; color:var(--text-dim);}
+  .sched-note{color:var(--text-dim); font-size:0.9rem; margin-top:20px;}
+  .hours-row{display:flex; gap:40px; margin-top:28px; flex-wrap:wrap;}
+  .hours-item .lbl{font-size:0.8rem; color:var(--text-dim); margin-bottom:4px;}
+  .hours-item .val{font-family:'Oswald'; font-size:1.15rem;}
+
+  /* ---- structure ---- */
+  .struct-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .struct-card{background:var(--bg); padding:30px 26px;}
+  .struct-card .num{color:var(--accent); font-family:'Oswald'; font-size:1rem; margin-bottom:14px;}
+  .struct-card h3{font-size:1.15rem; margin-bottom:10px;}
+  .struct-card p{color:var(--text-dim); font-size:0.92rem;}
+  @media (max-width:760px){ .struct-grid{grid-template-columns:1fr;} .hero-grid{grid-template-columns:1fr;} .sched-grid{grid-template-columns:repeat(4,1fr);} }
+
+  /* ---- reviews ---- */
+  .reviews{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .review{border-left:2px solid var(--accent); padding:4px 0 4px 20px;}
+  .review p{font-size:0.98rem; color:var(--text);}
+  .review .who{color:var(--text-dim); font-size:0.85rem; margin-top:12px;}
+  @media (max-width:760px){ .reviews{grid-template-columns:1fr;} }
+
+  /* ---- contact ---- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .contact-list{display:flex; flex-direction:column; gap:20px;}
+  .contact-list .lbl{font-size:0.8rem; color:var(--text-dim); margin-bottom:4px;}
+  .contact-list .val{font-size:1.05rem;}
+  .map-block{
+    border:1px solid var(--line); border-radius:var(--radius); min-height:260px;
+    background:repeating-linear-gradient(115deg, #201d18 0 2px, transparent 2px 34px);
+    display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:0.9rem; text-align:center; padding:20px;
+  }
+  .social-row{display:flex; gap:14px; margin-top:26px;}
+  .social-row a{border:1px solid var(--line); padding:9px 16px; border-radius:var(--radius); font-size:0.88rem;}
+  .social-row a:hover{border-color:var(--accent); color:var(--accent);}
+  @media (max-width:760px){ .contact-grid{grid-template-columns:1fr;} }
+
+  footer{padding:32px 0; color:var(--text-dim); font-size:0.85rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">IMPULSO<span>.</span></div>
+    <nav class="nav-links">
+      <a href="#horarios">Horários</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="nav-cta" href="#contato">Contato</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Centro · Cidade Exemplo</div>
+      <h1>Treino sério,<br><em>resultado real.</em></h1>
+      <p>Musculação e treinamento funcional em um espaço acolhedor. Estrutura completa, instrutores presentes e ambiente sem enrolação.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contato">Ver contato</a>
+        <a class="btn btn-ghost" href="#contato">Ver endereço</a>
+      </div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-num">4,7</div>
+      <div class="stars">★★★★★</div>
+      <div class="rating-sub">Avaliações demonstrativas</div>
+      <div class="divider"></div>
+      <div class="status-row">
+        <span class="status-open">● Aberta agora</span>
+        <span>Fecha 22:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horarios">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Horários</h2>
+      <p>Segunda a sexta sem fechar ao meio-dia. Sábado até as 17h.</p>
+    </div>
+    <div class="sched-grid">
+      <div class="day"><div class="d">SEG</div><div class="bar-track"><div class="bar" style="height:55%"></div></div><div class="t">7–22h</div></div>
+      <div class="day"><div class="d">TER</div><div class="bar-track"><div class="bar" style="height:55%"></div></div><div class="t">7–22h</div></div>
+      <div class="day"><div class="d">QUA</div><div class="bar-track"><div class="bar" style="height:55%"></div></div><div class="t">7–22h</div></div>
+      <div class="day"><div class="d">QUI</div><div class="bar-track"><div class="bar" style="height:55%"></div></div><div class="t">7–22h</div></div>
+      <div class="day peak"><div class="d">SEX</div><div class="bar-track"><div class="bar" style="height:78%"></div></div><div class="t">7–22h</div></div>
+      <div class="day"><div class="d">SÁB</div><div class="bar-track"><div class="bar" style="height:38%"></div></div><div class="t">8–17h</div></div>
+      <div class="day"><div class="d">DOM</div><div class="bar-track"><div class="bar" style="height:0%"></div></div><div class="t">Fechado</div></div>
+    </div>
+    <div class="hours-row">
+      <div class="hours-item"><div class="lbl">Horário de pico</div><div class="val">~18:00</div></div>
+      <div class="hours-item"><div class="lbl">Permanência média</div><div class="val">1–1,5h</div></div>
+    </div>
+    <p class="sched-note">Movimento moderado no fim da tarde — chegue mais cedo se preferir treinar com calma.</p>
+  </div>
+</section>
+
+<section id="estrutura">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Estrutura</h2>
+      <p>O que quem treina aqui mais nota.</p>
+    </div>
+    <div class="struct-grid">
+      <div class="struct-card">
+        <div class="num">01</div>
+        <h3>Equipamentos</h3>
+        <p>Aparelhos completos para musculação e treino funcional, mantidos em bom estado.</p>
+      </div>
+      <div class="struct-card">
+        <div class="num">02</div>
+        <h3>Instrutores</h3>
+        <p>Profissionais presentes no salão, acompanhando treino e corrigindo execução.</p>
+      </div>
+      <div class="struct-card">
+        <div class="num">03</div>
+        <h3>Ambiente</h3>
+        <p>Espaço limpo e higienizado, com fluxo tranquilo mesmo nos horários mais movimentados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Quem treina, aprova</h2>
+      <p>Resumo das avaliações no Google.</p>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <p>Ambiente agradável, com profissionais qualificados e boa estrutura geral.</p>
+        <div class="who">Avaliação no Google</div>
+      </div>
+      <div class="review">
+        <p>Equipamentos de qualidade, espaço tranquilo e instrutores atenciosos.</p>
+        <div class="who">Avaliação no Google</div>
+      </div>
+      <div class="review">
+        <p>Tudo limpo e higienizado, sem aglomeração durante o treino.</p>
+        <div class="who">Avaliação no Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" style="border-bottom:none;">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:26px;">
+        <h2>Visite ou ligue</h2>
+      </div>
+      <div class="contact-list">
+        <div>
+          <div class="lbl">Endereço</div>
+          <div class="val">Rua das Flores, 120<br>Centro, Cidade Exemplo - RS</div>
+        </div>
+        <div>
+          <div class="lbl">Telefone</div>
+          <div class="val">Contato demonstrativo</div>
+        </div>
+        <div>
+          <div class="lbl">E-mail</div>
+          <div class="val">contato@impulso.example.invalid</div>
+        </div>
+        <div>
+          <div class="lbl">Horário de funcionamento</div>
+          <div class="val">Seg–Sex: 7:00–22:00 · Sáb: 8:00–17:00</div>
+        </div>
+      </div>
+      <div class="social-row">Redes sociais demonstrativas</div>
+    </div>
+    <div class="map-block">Rua das Flores, 120<br>Centro, Cidade Exemplo — RS</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Impulso Fitness — Cidade Exemplo, RS</span>
+    <span>Mockup de site · não oficial</span>
+  </div>
+</footer>
+
+</body>
+</html>
